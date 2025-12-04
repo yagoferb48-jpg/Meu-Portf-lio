@@ -1,0 +1,236 @@
+:root{
+    --fundo:#383939;
+    --card:#000000;
+    --texto:#e6edf3;
+    --azul:#1789fb;
+    --cinza:#8b949e;
+    --transicao: 0.3s ease;
+}
+
+body.light{
+    --fundo:#f0f2f5;
+    --card:#ffffff;
+    --texto:#1f2328;
+    --azul:#0366d6;
+    --cinza:#555;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{  
+    font-family: 'poppins', sans-serif;
+    background-color: var(--fundo);
+    color:var(--texto);
+    line-height: 1.6;
+    transition: background-color var(--transicao), color var(--transicao);
+}
+
+header{
+    background-color: var(--card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1{
+    color:var(--azul);
+    font-size: 1.5rem;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color:var(--texto);
+    font-size: medium;
+    text-decoration: none;
+    transition: color var(--transicao);
+}
+
+/* CORRIGIDO */
+nav a:hover{
+    color:var(--azul);
+}
+
+#toggle-tema{
+    background: none;
+    border: none;
+    color: var(--azul);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform var(--transicao);
+}
+
+#toggle-tema:hover{
+    transform: scale(1.2);
+}
+
+section{
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* CORRIGIDO: removido column-count inválido */
+
+#sobre.container{
+    display: flex;
+    font-size: 3.5rem;
+    flex-direction:column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.sobre-texto {
+    max-width: 600px;
+}
+
+.Foto-perfil{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    margin: 0;
+    display: block;
+    box-shadow: 0 0 10px #fff,0 0 15px #fff;
+}
+
+.Foto-perfil:hover{
+    transform: scale(1.05);
+}
+
+.grid-linguagens{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+
+.grid-linguagens img{
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.grid-linguagens img:hover{
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px var(--azul));
+}
+.grid-linguagens img{
+    width: 100px;     
+    height: 100px;    
+    object-fit: contain; 
+    display: block;
+}
+
+.grid-projetos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card{
+    background-color: var(--card);
+    border:0.75px solid;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: transform var(--transicao), box-shadow var(--transicao);
+}
+
+/* CORRIGIDO: sombra e hover funcionando */
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(88,166,255,0.2);
+}
+
+/* CORRIGIDO: era .car img */
+.card img{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.site,.codigo{
+    width: 215px;
+}
+
+.escuro,.claro{
+    width: 215px;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color:var(--azul);
+    text-decoration: none;
+    font-weight: bold;    
+}
+
+.contato-links a { 
+    margin: 0.5rem;
+    color:var(--azul);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer{
+    background-color: var(--card);
+    padding: 1rem;
+    text-align: center;
+    color:var(--cinza);
+    font-size: 0.9rem;
+}
+
+#btn-topo{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    padding: 0.7rem;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transicao);
+}
+
+#btn-topo:hover{
+    transform: scale(1.1);
+}
+
+.fade-in{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.crud{
+    width: 300px;
+}
