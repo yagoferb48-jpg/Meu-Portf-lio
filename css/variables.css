@@ -1,0 +1,34 @@
+:root {
+    /* Cores */
+    --color-bg: #0f172a;
+    --color-card: #020617;
+    --color-text: #e5e7eb;
+    --color-muted: #94a3b8;
+    --color-primary: #3b82f6;
+
+    /* Tipografia */
+    --font-main: 'poppins', san-serif;
+    /* Espaçamentos */
+
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 4rem;
+
+    /* Bordas */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+
+    /* Transições */
+    transition: 0.3s ease;
+
+}
+
+/* Tema Claro */
+body.light{
+    --color-bg:#f8fafc;
+    --color-card:#ffffff;
+    --color-text:#0f172a
+    --color-muted:#475569;
+    --color-primary:#2563eb;
+}

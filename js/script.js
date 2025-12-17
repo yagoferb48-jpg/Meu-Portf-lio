@@ -1,54 +1,52 @@
-// Rolagem suave ao clicar nos links do menu
-document.querySelectorAll('nav a').forEach(link => {
+// Tema claro / Tema escuro
+const toggleThemeBtn = document.getElementById('toggle-theme');
+const body = document.body;
+
+//  Carregar tema salvo
+const savedTheme = localStorage.getItem('theme');
+
+if (savedTheme === 'light') {
+    body.classList.add('light');
+    toggleThemeBtn.textContent = '☀️';
+} else {
+    toggleThemeBtn.textContent = '🌙'
+}
+
+// alternar tema 
+
+toggleThemeBtn.addEventListener('click', () => {
+    body.classList.toggle('light');
+    const isLight = body.classList.contains('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    toggleThemeBtn.textContent = isLight ? '☀️' : '🌙'
+});
+// Scroll SUAVE
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', e => {
-        e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
-        target.scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-// Alternar tema claro/escuro
-const btnTema = document.getElementById('toggle-tema');
-btnTema.addEventListener('click', () => {
-    document.body.classList.toggle('light');
-    btnTema.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
-});
-
-// Animação de aparecer ao rolar
-const sections = document.querySelectorAll('.fade-in');
-const aparecer = () => {
-    sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-            sec.classList.add('visible');
+        const targetId = link.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' })
         }
     });
-};
-window.addEventListener('scroll', aparecer);
 
-// Botão voltar ao topo
-const btnTopo = document.getElementById("btnTopo");
-btnTopo.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
 });
 
+// Animações
+const animatedElements =document.querySelectorAll('.section, .project-card')
 
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    {threshold:0.2}
+);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+animatedElements.forEach(el => observer.observe(el));
